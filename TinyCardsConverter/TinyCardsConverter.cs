@@ -23,13 +23,15 @@ namespace TinyCardsConverter
                 var cardsEndIndex = csvData.IndexOf('"', cardsStartIndex + 1);
                 var deckEndIndex = csvData.IndexOf(_newLine, cardsEndIndex, StringComparison.Ordinal);
                 
-                var deckDataFirstPart = csvData.Substring(0, cardsStartIndex).Trim();
+                var deckDataFirstPart = csvData.Substring(deckStartIndex, cardsStartIndex- deckStartIndex).Trim();
                 var cardsData = csvData.Substring(cardsStartIndex, cardsEndIndex+1 - cardsStartIndex);
 
                 var cards = ParseCards(cardsData);
                 
                 var deckDataList = deckDataFirstPart.Split(new[] {','}, StringSplitOptions.None);
-                
+
+                deckStartIndex = deckEndIndex + 1;
+
                 yield return new CardDeck
                 {
                     Name = deckDataList[0],
@@ -38,7 +40,6 @@ namespace TinyCardsConverter
                     Cards = cards
                 };
 
-                deckStartIndex = deckEndIndex + 1;
             }
         }
 

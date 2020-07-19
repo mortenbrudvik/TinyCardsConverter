@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace TinyCardsConverter
 {
@@ -9,6 +10,7 @@ namespace TinyCardsConverter
             Alternatives.AddRange(alternatives);
         }
 
+        [JsonProperty("alternatives")]
         public List<string> Alternatives { get; set; } = new List<string>();
     }
 }

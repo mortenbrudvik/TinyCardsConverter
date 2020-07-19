@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace TinyCardsConverter
 {
@@ -11,8 +12,11 @@ namespace TinyCardsConverter
             Back = new CardView(backAlternatives);
         }
 
+        [JsonProperty("name")]
         public string Name { get; set; }
+        [JsonProperty("front")]
         public CardView Front { get; set; }
+        [JsonProperty("back")]
         public CardView Back { get; set; }
     }
 }

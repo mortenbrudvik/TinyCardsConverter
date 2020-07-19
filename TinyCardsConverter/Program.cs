@@ -25,11 +25,11 @@ namespace TinyCardsConverter
             {
                 var cardData = File.ReadAllText(filePath);
                 var cardConverter = new TinyCardsConverter();
-                var decks = cardConverter.Convert(cardData);
+                var decks = cardConverter.Convert(cardData).ToList();
 
-                var totalCardNumber = decks.Sum(x => x.Cards.Count());
+                JSONExport.Export("decks.json", "images", decks);
 
-                Console.Out.WriteLine($"Converted {decks.Count()} decks containing a total of {decks.Sum(x => x.Cards.Count())} cards.");
+                Console.Out.WriteLine($"Converted {decks.Count} decks containing a total of {decks.Sum(x => x.Cards.Count())} cards.");
 
                 Console.Out.WriteLine("Data conversion completed! ");
             }

@@ -36,6 +36,19 @@ namespace TinyCardsConverter.Test
         }
 
         [Test]
+        public void Convert_2DeckWith0Cards_2DeckWith0CardsReturned()
+        {
+            var data = CreateDecks(new List<string> { CreateDeck("Deck 1"), CreateDeck("Deck 2") });
+
+            var converter = new TinyCardsConverter();
+            var decks = converter.Convert(data).ToList();
+
+            Console.Out.WriteLine(data);
+
+            Assert.That(decks.Count == 2 && decks[1].Name == "Deck 2");
+        }
+
+        [Test]
         public void Convert_1DeckWith1Cards_1DeckWith1CardsReturned()
         {
             var data = CreateDecks(new List<string> { CreateDeck("Deck 1", "", "", new List<string> {CreateCard(1)}) });
