@@ -10,7 +10,7 @@ namespace TinyCardsConverter
 
         public string CoverImagePath { get; set; }
 
-        public List<Card> Cards { get; } = new List<Card>();
+        public IEnumerable<Card> Cards { get; set; } = new List<Card>();
         public string Privacy { get; set; }
         public string Language { get; set; }
         public bool IsDeleted { get; set; }

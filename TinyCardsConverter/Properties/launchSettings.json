@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "TinyCardsConverter": {
+      "commandName": "Project",
+      "commandLineArgs": "decks.csv"
+    }
+  }
+}
