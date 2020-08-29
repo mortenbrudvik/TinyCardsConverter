@@ -61,14 +61,6 @@ namespace TinyCardsConverter.Test
             Assert.That(decks.Count == 1 && decks[0].Cards.Count() == 1);
         }
 
-        [Test]
-        public void Test()
-        {
-            var lines = CreateCard(1).Split("\r\n");
-            var frontAlternatives = lines.SkipWhile(x => x != "Front").Skip(1).TakeWhile(x => x.StartsWith("*"));
-            Console.Out.WriteLine("");
-        }
-
         private CardDeck CreateCardDeck(string name)
         {
             return new CardDeck
@@ -113,7 +105,7 @@ namespace TinyCardsConverter.Test
             return cardData.ToString();
         }
         
-        private static string CreateDeck(string name = "deck", string description = "", string coverImagePath = "", IReadOnlyCollection<string> cards = null)
+        private static string CreateDeck(string name = "deck", string description = "", string coverImagePath = "", IReadOnlyCollection<string> cards = null, string deleted = "False", string createdAt = "2020-06-07 11:18:52", string updatedAt = "2020-06-23 14:38:53")
         {
             var cardsData = new StringBuilder();
 
@@ -125,7 +117,7 @@ namespace TinyCardsConverter.Test
                 }
             }
             var deckData = new StringBuilder();
-            deckData.AppendLine($"{name},{description},{coverImagePath},\"{cardsData}\",Only me,en,False,2020-06-07 11:18:52,2020-06-23 14:38:53");
+            deckData.AppendLine($"{name},{description},{coverImagePath},\"{cardsData}\",Only me,en,{deleted},{createdAt},{updatedAt}");
             deckData.AppendLine();
 
 

@@ -19,7 +19,7 @@ namespace TinyCardsConverter
             {
                 if (deck.CoverImagePath.Trim().Length <= 0) continue;
 
-                var imageFilePath = $"{imageFolder}\\{Guid.NewGuid().ToString()}.jpeg";
+                var imageFilePath = $"{imageFolder}\\{Guid.NewGuid()}.jpeg";
                 Console.Out.WriteLine($"Downloading image \"{deck.CoverImagePath}\" to {imageFilePath} from deck {deck.Name}");
                 webClient.DownloadFile(deck.CoverImagePath, imageFilePath);
                 deck.CoverImagePath = imageFilePath;

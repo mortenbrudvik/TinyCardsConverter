@@ -25,19 +25,24 @@ namespace TinyCardsConverter
                 
                 var deckDataFirstPart = csvData.Substring(deckStartIndex, cardsStartIndex- deckStartIndex).Trim();
                 var cardsData = csvData.Substring(cardsStartIndex, cardsEndIndex+1 - cardsStartIndex);
+                var deckDataLastPart = csvData.Substring(cardsEndIndex + 1, deckEndIndex+1 - cardsEndIndex).Trim();
 
                 var cards = ParseCards(cardsData);
                 
-                var deckDataList = deckDataFirstPart.Split(new[] {','}, StringSplitOptions.None);
+                var deckDataListFirstPart = deckDataFirstPart.Split(new[] {','}, StringSplitOptions.None);
+                var deckDataListLastPart = deckDataLastPart.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
 
                 deckStartIndex = deckEndIndex + 1;
 
                 yield return new CardDeck
                 {
-                    Name = deckDataList[0],
-                    Description = deckDataList[1],
-                    CoverImagePath = deckDataList[2],
-                    Cards = cards
+                    Name = deckDataListFirstPart[0],
+                    Description = deckDataListFirstPart[1],
+                    CoverImagePath = deckDataListFirstPart[2],
+                    Cards = cards,
+                    IsDeleted = bool.Parse(deckDataListLastPart[2]),
+                    CreatedAt = DateTime.Parse(deckDataListLastPart[3]),
+                    UpdatedAt = DateTime.Parse(deckDataListLastPart[4])
                 };
 
             }
