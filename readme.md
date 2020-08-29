@@ -9,4 +9,4 @@ https://tinycards.duolingo.com/
 
 Compile it with Visual Code/Studio
 
-`TinyCardsConverter.exe <Tiny cards export file path> 
+`TinyCardsConverter.exe <Tiny cards export file path>` 
